@@ -17,5 +17,5 @@ runs:
   using: "composite"
   steps:
       - name: Retrieve and export dependencies
-        run: python script.py  --conanfile ${{ inputs.conanfile }} --profile ${{ inputs.profile }} --directory ${{ inputs.directory }}
+        run: python "${{ github.action_path }}/script.py"  --conanfile "${{ inputs.conanfile }}" --profile "${{ inputs.profile }}" --directory "${{ inputs.directory }}"
         shell: bash
