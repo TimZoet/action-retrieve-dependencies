@@ -24,10 +24,16 @@ if __name__ == "__main__":
         subprocess.run([
             "git", "clone", "--depth", "1",
             "-b", require.ref.channel,
-            "--recurse-submodules",
             f"https://github.com/TimZoet/{require.ref.name}.git",
             path
         ], check=True)
+
+        if require.ref.name == "bettertest":
+            subprocess.run(["git", "submodule", "set-url", "--", "modules/bettertest_alexandria", "https://github.com/TimZoet/bettertest-alexandria-module.git"], check=True)
+            subprocess.run(["git", "submodule", "set-url", "--", "modules/bettertest_json", "https://github.com/TimZoet/bettertest-json-module.git"], check=True)
+            subprocess.run(["git", "submodule", "set-url", "--", "modules/bettertest_xml", "https://github.com/TimZoet/bettertest-xml-module.git"], check=True)
+            subprocess.run(["git", "submodule", "update", "--init"], check=True)
+
         subprocess.run([
             "conan", "export",
             "--user", require.ref.user,
