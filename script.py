@@ -29,10 +29,10 @@ if __name__ == "__main__":
         ], check=True)
 
         if require.ref.name == "bettertest":
-            subprocess.run(["git", "submodule", "set-url", "--", "modules/bettertest_alexandria", "https://github.com/TimZoet/bettertest-alexandria-module.git"], check=True)
-            subprocess.run(["git", "submodule", "set-url", "--", "modules/bettertest_json", "https://github.com/TimZoet/bettertest-json-module.git"], check=True)
-            subprocess.run(["git", "submodule", "set-url", "--", "modules/bettertest_xml", "https://github.com/TimZoet/bettertest-xml-module.git"], check=True)
-            subprocess.run(["git", "submodule", "update", "--init"], check=True)
+            subprocess.run(["git", "submodule", "set-url", "--", "modules/bettertest_alexandria", "https://github.com/TimZoet/bettertest-alexandria-module.git"], cwd=path, check=True)
+            subprocess.run(["git", "submodule", "set-url", "--", "modules/bettertest_json", "https://github.com/TimZoet/bettertest-json-module.git"], cwd=path, check=True)
+            subprocess.run(["git", "submodule", "set-url", "--", "modules/bettertest_xml", "https://github.com/TimZoet/bettertest-xml-module.git"], cwd=path, check=True)
+            subprocess.run(["git", "submodule", "update", "--init"], cwd=path, check=True)
 
         subprocess.run([
             "conan", "export",
