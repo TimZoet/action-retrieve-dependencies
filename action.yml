@@ -1,0 +1,21 @@
+name: 'Retrieve dependencies'
+description: 'Retrieve Conan dependencies of the package that is currently being built, and export them to the local Conan cache.'
+inputs:
+  conanfile:
+    description: 'Path to conanfile of package whose dependencies will be retrieved.'
+    required: true
+    default: ''
+  profile:
+    description: 'Path to profile with which required dependencies are determined.'
+    required: true
+    default: ''
+  directory:
+    description: 'Path to directory in which all dependencies will be stored.'
+    required: true
+    default: ''
+runs:
+  using: "composite"
+  steps:
+      - name: Retrieve and export dependencies
+        run: python ${{ github.action_path }}/script.py  --conanfile ${{ inputs.conanfile }} --profile ${{ inputs.profile }} --directory ${{ inputs.directory }}
+        shell: bash
