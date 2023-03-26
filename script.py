@@ -43,8 +43,9 @@ if __name__ == "__main__":
 
     api = ConanAPI()
     profile = api.profiles.get_profile([args.profile])
+    remotes = api.remotes.list()
     deps_graph = api.graph.load_graph_consumer(args.conanfile, None, None,
                                                None, None,
                                                profile, profile, None,
-                                               [], [], False, False,
+                                               remotes, [], False, False,
                                                callback)
