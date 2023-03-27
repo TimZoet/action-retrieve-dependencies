@@ -1,5 +1,5 @@
 name: 'Retrieve dependencies'
-description: 'Retrieve Conan dependencies of the package that is currently being built, and export them to the local Conan cache.'
+description: 'Retrieve Conan dependencies of the package that is currently being built from GitHub, and export them to the local Conan cache.'
 inputs:
   conanfile:
     description: 'Path to conanfile of package whose dependencies will be retrieved.'
